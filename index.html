@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>e-LKPD Center</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      .filter-tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 10px;
+        border-radius: 15px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .filter-tag.jenjang {
+        background-color: #1e88e5; /* Biru */
+        color: white;
+      }
+
+      .filter-tag.kelas {
+        background-color: #43a047; /* Hijau */
+        color: white;
+      }
+
+      .filter-tag.elemen {
+        background-color: #fff9c4; /* Kuning Pucat */
+        color: #333;
+        border: 1px solid #ffeb3b;
+      }
+
+      .filter-tag .close-btn {
+        margin-left: 8px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 15px 40px;
+      }
+      .judul-header {
+        font-size: 25px;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .judul-header .biru {
+        color: #1e88e5; /* biru */
+      }
+
+      .judul-header .hijau {
+        color: #43a047; /* oranye */
+      }
+
+      header .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      header .logo img {
+        width: 45px;
+        margin-right: 10px;
+      }
+
+      header .logo h1 {
+        font-size: 28px;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      nav a {
+        color: #737373;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 530;
+      }
+
+      /*=== TOMBOL KIRIM ===*/
+      .btn-kirim {
+        background-color: #fb8c00;
+        padding: 8px 16px;
+        border-radius: 20px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /*=== HERO SECTION ===*/
+      .hero {
+        background: #1e88e5 url("pattern.jpg") center/cover no-repeat;
+        color: #ffffff;
+      }
+      /* Banner */
+      .banner {
+        text-align: center;
+        color: white;
+        padding: 0px 0px;
+        background-image: url("banner.png");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .banner h2 {
+        font-size: 28px;
+        font-weight: 800;
+      }
+
+      .banner p {
+        font-size: 18px;
+        margin-top: 10px;
+      }
+
+      /* Konten utama */
+      main {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 40px;
+        flex-wrap: wrap;
+      }
+
+      /* Sidebar pencarian */
+      .filter-box,
+      .filter-box label,
+      .filter-box select,
+      .filter-box option,
+      .filter-box button {
+        font-family: "Poppins", sans-serif; /* ✔ samakan font */
+        font-size: 15px;
+      }
+
+      .filter-box {
+        width: 220px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .filter-box h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #1e88e5;
+        text-align: center;
+      }
+
+      .filter-box select,
+      .filter-box button {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .filter-box button {
+        background-color: #1e88e5;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 15px;
+      }
+      .content-wrapper {
+        flex: 1; /* Memastikan wrapper mengambil sisa ruang (sisi kanan) */
+        min-width: 0; /* Penting untuk flex item */ 
+      }
+
+      /* Grid e-LKPD */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        gap: 25px;
+      }
+
+      .card {
+        width: 80%;
+        aspect-ratio: 1 / 1.414;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 25px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .card:hover {
+        transform: translateY(-4px);
+      }
+
+      .card img {
+        width: 100%;
+        aspect-ratio: 1 / 1.414;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+
+      /* ===== JUDUL LKPD ===== */
+      .card h4 {
+        font-size: 18px;
+        margin: 10px 0 5px;
+        font-weight: 700;
+      }
+
+      /* ===== SUB JUDUL ===== */
+      .card p {
+        font-size: 15px;
+        color: #555;
+        margin-top: -5px;
+      }
+
+      /* ===== TOMBOL PRATINJAU ===== */
+      .btn-preview {
+        display: block;
+        width: 100%;
+        padding: 6px 0;
+        margin-top: 10px;
+        background: white;
+        border: 2px solid #1e88e5;
+        color: #1e88e5;
+        border-radius: 20px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* ===== TOMBOL UNDUH ===== */
+      .btn-download {
+        display: block;
+        width: 100%;
+        padding: 7px 0;
+        margin-top: 8px;
+        background: #43a047;
+        color: white;
+        border-radius: 20px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background-color: #0a5ed7;
+        color: white;
+        margin-top: 60px;
+        padding: 40px 50px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 14px;
+        }
+
+        footer .footer-new {
+          margin-left: 125px; 
+        }
+
+      footer div {
+        width: 30%;
+        min-width: 250px;
+        text-align: justify;
+      }
+
+      footer h4 {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      footer p,
+      footer a {
+        color: white;
+        text-decoration: none;
+        line-height: 1.6;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .content-box {
+          width: 95%;
+          padding: 25px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 25px;
+        }
+        footer div {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo" width="60" />
+        <h1 class="judul-header">
+          <span class="hijau">e-LKPD</span> <span class="biru">Center</span>
+        </h1>
+      </div>
+      <nav>
+        <a href="tentang.html">Tentang Kami</a>
+        <a href="syarat.html">Syarat dan Ketentuan</a>
+        <a href="bantuan.html">Bantuan</a>
+        <a href="#filterSection">Cari LKPD</a>
+        <a href="kirim.html" class="btn-kirim">Kirim e-LKPD</a>
+      </nav>
+    </header>
+
+    <!-- Banner -->
+    <section class="banner">
+      <img src="banner.png" />
+    </section>
+
+    <!-- Konten utama -->
+    <main>
+      <aside class="filter-box" id="filterSection">
+        <h3>Cari Berdasarkan</h3>
+        <label>Jenjang</label>
+        <select id="jenjang">
+          <option value="">Pilih Jenjang</option>
+          <option value="SMP">SMP</option>
+          <option value="SMA">SMA</option>
+        </select>
+
+        <label>Kelas</label>
+        <select id="kelas">
+          <option value="">Pilih Kelas</option>
+        </select>
+
+        <label>Elemen</label>
+        <select id="elemen">
+          <option value="">Pilih Elemen</option>
+          <option value="Bilangan">Bilangan</option>
+          <option value="Aljabar">Aljabar</option>
+          <option value="Pengukuran">Pengukuran</option>
+          <option value="Geometri">Geometri</option>
+          <option value="Analisis Data dan Peluang">
+            Analisis Data dan Peluang
+          </option>
+        </select>
+        <button onclick="filterLKPD()">Cari🔍</button>
+      </aside>
+
+      <div class="content-wrapper">
+        <div
+          id="filter-tags"
+          style="
+            flex: 1;
+            min-width: 600px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+          "
+        ></div>
+      </section>
+
+      <section class="cards">
+        <div
+          class="card"
+          data-jenjang="SMA"
+          data-kelas="Kelas X"
+          data-elemen="Analisis Data dan Peluang"
+        >
+          <img src="peluang1.png" />
+
+          <h4>LKPD Peluang</h4>
+          <p>Kejadian Majemuk</p>
+          <a href="pratinjaupeluang.html" class="btn-preview">Pratinjau</a>
+          <a href="lkpdpeluang.pdf" class="btn-download">Unduh</a>
+        </div>
+
+        <div
+          class="card"
+          data-jenjang="SMA"
+          data-kelas="Kelas X"
+          data-elemen="Aljabar"
+        >
+          <img src="spltv1.png" />
+
+          <h4>LKPD Aljabar</h4>
+          <p>SPLTV</p>
+          <a href="pratinjauspltv.html" class="btn-preview">Pratinjau</a>
+          <a href="lkpdspltv.pdf" class="btn-download">Unduh</a>
+        </div>
+
+        <div
+          class="card"
+          data-jenjang="SMP"
+          data-kelas="Kelas VII"
+          data-elemen="Geometri"
+        >
+          <img src="kesebangunan1.png" />
+
+          <h4>LKPD Geometri</h4>
+          <p>Kesebangunan</p>
+          <a href="pratinjaukesebangunan.html" class="btn-preview">Pratinjau</a>
+          <a href="#" class="btn-download">Unduh</a>
+        </div>
+
+        <div
+          class="card"
+          data-jenjang="SMP"
+          data-kelas="Kelas VIII"
+          data-elemen="Aljabar"
+        >
+          <img src="operasi1.jpg" />
+
+          <h4>LKPD Aljabar</h4>
+          <p>Operasi Fungsi</p>
+          <a href="pratinjauoperasi.html" class="btn-preview">Pratinjau</a>
+          <a href="lkpdoperasi.pdf" class="btn-download">Unduh</a>
+        </div>
+
+        <div
+          class="card"
+          data-jenjang="SMP"
+          data-kelas="Kelas VII"
+          data-elemen="Bilangan"
+        >
+          <img src="bulat1.jpeg" />
+
+          <h4>LKPD Bilangan</h4>
+          <p>Bilangan Bulat</p>
+          <a href="pratinjaubilbul.html" class="btn-preview">Pratinjau</a>
+          <a href="#" class="btn-download">Unduh</a>
+        </div>
+
+        <div
+          class="card"
+          data-jenjang="SMA"
+          data-kelas="Kelas X"
+          data-elemen="Geometri"
+        >
+          <img src="trigonometri1.jpg" />
+
+          <h4>LKPD Geometri</h4>
+          <p>Trigonometri</p>
+          <a href="pratinjautrigonometri.html" class="btn-preview">Pratinjau</a>
+          <a href="lkpdtrigonometri.pdf" class="btn-download">Unduh</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <h4>Tentang e-LKPD Center</h4>
+        <p>
+          e-LKPD Center merupakan platform penyedia LKPD Matematika Kurikulum Merdeka untuk jenjang SMP dan SMA dengan berbagai elemen.
+        </p>
+      </div>
+
+      <div class="footer-new">
+        <h4>e-LKPD Baru</h4>
+        <div>
+          <a href="pratinjaupeluang.html">LKPD Peluang | Kejadian Majemuk</a><br />
+          <a href="pratinjauspltv.html">LKPD Aljabar | SPLTV</a><br />
+          <a href="pratinjautrigonometri.html">LKPD Geometri | Trigonometri</a><br />
+          <a href="pratinjaubilbul.html">LKPD Bilangan | Bilangan Bulat</a><br />
+        </div>
+      </div>
+
+      <div>
+        <h4>Hubungi Kami</h4>
+        <p>
+          📧
+          <a href="mailto:siti.aisyah.2203116@students.um.ac.id">
+            siti.aisyah.2203116@students.um.ac.id
+          </a>
+          <br />
+          ☎️ Admin e-LKPD Center: 0878-6165-5375
+        </p>
+      </div>
+    </footer>
+
+
+    <script>
+      const jenjangSelect = document.getElementById("jenjang");
+      const kelasSelect = document.getElementById("kelas");
+      const elemenSelect = document.getElementById("elemen");
+      const filterTagsContainer = document.getElementById("filter-tags");
+      const filterButton = document.querySelector(".filter-box button"); // Tombol Cari
+
+      // --- 1. Fungsi untuk memperbarui pilihan Kelas ---
+      function updateKelasOptions() {
+        const jenjang = jenjangSelect.value;
+        kelasSelect.innerHTML = "<option value=''>Pilih Kelas</option>";
+
+        if (jenjang === "SMP") {
+          const list = ["Kelas VII", "Kelas VIII", "Kelas IX"];
+          list.forEach((k) => {
+            kelasSelect.innerHTML += `<option value="${k}">${k}</option>`;
+          });
+        } else if (jenjang === "SMA") {
+          const list = ["Kelas X", "Kelas XI", "Kelas XII"];
+          list.forEach((k) => {
+            kelasSelect.innerHTML += `<option value="${k}">${k}</option>`;
+          });
+        }
+      }
+
+      // --- 2. Logika Inti Filter LKPD ---
+      function filterLKPD() {
+        const jenjangFilter = jenjangSelect.value.trim();
+        const kelasFilter = kelasSelect.value.trim();
+        const elemenFilter = elemenSelect.value.trim();
+
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach((card) => {
+          const cardJenjang = card.getAttribute("data-jenjang").trim();
+          const cardKelas = card.getAttribute("data-kelas").trim();
+          const cardElemen = card.getAttribute("data-elemen").trim();
+
+          const cocokJenjang = !jenjangFilter || cardJenjang === jenjangFilter;
+          const cocokKelas = !kelasFilter || cardKelas === kelasFilter;
+          const cocokElemen = !elemenFilter || cardElemen === elemenFilter;
+
+          if (cocokJenjang && cocokKelas && cocokElemen) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+        renderTags(); // Panggil fungsi render tags setiap kali filter berubah
+      }
+
+      // --- 3. Fungsi untuk membuat dan menampilkan Tag Filter ---
+      function renderTags() {
+        filterTagsContainer.innerHTML = ""; // Bersihkan tag yang ada
+
+        const filters = [
+          {
+            id: "jenjang",
+            value: jenjangSelect.value,
+            text: jenjangSelect.value,
+          },
+          { id: "kelas", value: kelasSelect.value, text: kelasSelect.value },
+          { id: "elemen", value: elemenSelect.value, text: elemenSelect.value },
+        ];
+
+        filters.forEach((filter) => {
+          if (
+            filter.value &&
+            filter.value !== "Pilih Jenjang" &&
+            filter.value !== "Pilih Kelas" &&
+            filter.value !== "Pilih Elemen"
+          ) {
+            const tagDiv = document.createElement("div");
+            tagDiv.className = `filter-tag ${filter.id.toLowerCase()}`;
+            tagDiv.setAttribute("data-filter-id", filter.id);
+
+            // Teks yang akan ditampilkan pada tag
+            let tagText = filter.text;
+
+            // Modifikasi Teks Khusus (opsional, agar lebih rapi)
+            if (
+              filter.id === "elemen" &&
+              tagText.includes("Analisis Data dan Peluang")
+            ) {
+              tagText = "ANALISIS DATA DAN PELUANG"; // Gunakan huruf besar
+            }
+
+            tagDiv.innerHTML = `${tagText} <span class="close-btn" data-filter-id="${filter.id}">x</span>`;
+
+            // Menambahkan fungsi hapus tag saat diklik
+            tagDiv
+              .querySelector(".close-btn")
+              .addEventListener("click", function (e) {
+                const idToReset = e.target.getAttribute("data-filter-id");
+
+                if (idToReset === "jenjang") {
+                  jenjangSelect.value = "";
+                  updateKelasOptions(); // Reset kelas juga
+                } else if (idToReset === "kelas") {
+                  kelasSelect.value = "";
+                } else if (idToReset === "elemen") {
+                  elemenSelect.value = "";
+                }
+
+                filterLKPD(); // Jalankan ulang filter
+              });
+
+            filterTagsContainer.appendChild(tagDiv);
+          }
+        });
+      }
+
+      // --- 4. Setup Event Listeners ---
+      function setupEventListeners() {
+        // Ketika jenjang berubah, hanya update pilihan kelas (TIDAK ADA FILTER OTOMATIS)
+        jenjangSelect.addEventListener("change", updateKelasOptions);
+
+        // Hapus event listener 'change' untuk kelasSelect dan elemenSelect
+        // agar filter hanya berjalan saat tombol "Cari" diklik.
+
+        // Tambahkan event listener 'click' pada tombol Cari untuk menjalankan filter
+        filterButton.addEventListener("click", filterLKPD);
+      }
+
+      // Panggil setup saat halaman dimuat
+      document.addEventListener("DOMContentLoaded", () => {
+        setupEventListeners();
+        renderTags(); // Pastikan tags ditampilkan (jika ada nilai default)
+        filterLKPD(); // Tetap panggil agar semua LKPD ditampilkan saat load awal
+      });
+      
+    </script>
+  </body>
+</html>

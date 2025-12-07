@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kirim e-LKPD | e-LKPD Center</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background-color: #f5f8ff;
+        color: #333;
+      }
+
+      /* ===== HEADER ===== */
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffffff;
+        padding: 15px 40px;
+      }
+      .judul-header {
+        font-size: 25px;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .judul-header .biru {
+        color: #1e88e5;   /* biru */
+      }
+
+      .judul-header .hijau {
+        color: #43a047;   /* oranye */
+        }
+
+      header .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      header .logo img {
+        width: 45px;
+        margin-right: 10px;
+      }
+
+      header .logo h1 {
+        font-size: 28px;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 25px;
+      }
+
+      nav a {
+        color: #737373;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 530;
+      }
+
+      /*=== TOMBOL KIRIM ===*/
+      .btn-kirim {
+        background-color: #fb8c00;
+        padding: 8px 16px;
+        border-radius: 20px;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* ===== BREADCRUMB ===== */
+      .breadcrumb {
+        font-size: 15px;
+        padding: 15px 50px;
+        background-color: #1e88e5;
+      }
+
+      .breadcrumb a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        margin-right: 10px;
+      }
+
+      .breadcrumb span {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 500;
+        margin-left: 10px;
+      }
+
+      /* ===== TITLE ===== */
+      .judul {
+        color: #1e88e5;
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: -20px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      /* ===== CONTENT ===== */
+      .container {
+        max-width: 850px;
+        margin: 30px auto;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      .section h3 {
+        color: #2e7d32;
+        background-color: #e8f5e9;
+        padding: 10px 15px;
+        border-left: 5px solid #2e7d32;
+        border-radius: 6px;
+        font-size: 18px;
+        margin-top: 0;
+      }
+
+      ol {
+        margin: 10px 0 10px 20px;
+        line-height: 1.7;
+      }
+
+      a {
+        color: #0a58ca;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .note {
+        background-color: #f1f8e9;
+        border-left: 4px solid #81c784;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-size: 15px;
+        color: #33691e;
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background-color: #0a5ed7;
+        color: white;
+        margin-top: 60px;
+        padding: 40px 50px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        font-size: 14px;
+      }
+
+      footer .footer-new {
+          margin-left: 125px; 
+        }
+
+
+      footer div {
+        width: 30%;
+        min-width: 250px;
+        text-align: justify;
+      }
+
+      footer h4 {
+        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      footer p,
+      footer a {
+        color: white;
+        text-decoration: none;
+        line-height: 1.6;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .content-box {
+          width: 95%;
+          padding: 25px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 25px;
+        }
+        footer div {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <img src="logo.png" alt="Logo" width="60" />
+      <h1 class="judul-header">
+        <span class="hijau">e-LKPD</span> <span class="biru">Center</span>
+      </h1>
+      </div>
+      <nav>
+        <a href="tentang.html">Tentang Kami</a>
+        <a href="syarat.html">Syarat dan Ketentuan</a>
+        <a href="bantuan.html">Bantuan</a>
+        <a href="index.html#filterSectionn">Cari LKPD</a>
+        <a href="kirim.html" class="btn-kirim">Kirim e-LKPD</a>
+      </nav>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="index.html">Beranda</a> › <span>Kirim e-LKPD</span>
+    </div>
+
+
+    <!-- ===== TITLE ===== -->
+    <div class="judul">KIRIM e-LKPD</div>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container" id="filterSection">
+      <div class="section">
+        <h3>📄 Panduan Mengirim LKPD</h3>
+        <ol>
+          <li>
+            <b>Siapkan berkas LKPD Anda</b><br />
+            Pastikan LKPD telah disusun dengan rapi dan lengkap sesuai dengan
+            kriteria berikut:
+            <ul>
+              <li>Sesuai Capaian Pembelajaran terbaru</li>
+              <li>Berpusat pada peserta didik (<i>student centered</i>)</li>
+              <li>Berbasis kontekstual</li>
+              <li>Memuat variasi tingkat kesulitan (diferensiasi)</li>
+              <li>Mengingatkan literasi dan numerasi</li>
+              <li>Tampilannya sistematis dan menarik</li>
+            </ul>
+          </li>
+
+          <li>
+            <b>Isi formulir kirim LKPD pada tautan berikut:</b><br />
+            <a href="https://tinyurl.com/UnggahLKPD" target="_blank">
+              https://tinyurl.com/UnggahLKPD </a
+            ><br />
+            Setelah formulir terisi lengkap, klik tombol <b>“Kirim”</b> atau
+            <b>“Submit”</b>.
+          </li>
+
+          <li>
+            <b>LKPD dalam proses review</b><br />
+            LKPD Anda akan direview oleh tim e-LKPD Center sebelum
+            dipublikasikan di website.
+          </li>
+        </ol>
+      </div>
+
+      <div class="section">
+        <h3>⚠️ Catatan Penting</h3>
+        <div class="note">
+          <ol>
+            <li>
+              Pastikan karya yang dikirim adalah hasil orisinal dan bukan
+              plagiasi.
+            </li>
+            <li>LKPD yang memenuhi kriteria akan dipublikasikan di website.</li>
+            <li>
+              Dengan mengirim LKPD, Anda memberikan izin kepada e-LKPD Center
+              untuk menampilkan dan membagikan karya Anda secara publik untuk
+              kepentingan pendidikan.
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <h4>Tentang e-LKPD Center</h4>
+        <p>
+          e-LKPD Center merupakan platform penyedia LKPD Matematika Kurikulum Merdeka untuk jenjang SMP dan SMA dengan berbagai elemen.
+        </p>
+      </div>
+
+      <div class="footer-new">
+        <h4>e-LKPD Baru</h4>
+        <div>
+          <a href="pratinjaupeluang.html">LKPD Peluang | Kejadian Majemuk</a><br />
+          <a href="pratinjauspltv.html">LKPD Aljabar | SPLTV</a><br />
+          <a href="pratinjautrigonometri.html">LKPD Geometri | Trigonometri</a><br />
+          <a href="pratinjaubilbul.html">LKPD Bilangan | Bilangan Bulat</a><br />
+        </div>
+      </div>
+
+      <div>
+        <h4>Hubungi Kami</h4>
+        <p>
+          📧
+          <a href="mailto:siti.aisyah.2203116@students.um.ac.id">
+            siti.aisyah.2203116@students.um.ac.id
+          </a>
+          <br />
+          ☎️ Admin e-LKPD Center: 0878-6165-5375
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
